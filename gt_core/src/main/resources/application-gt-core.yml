@@ -1,0 +1,139 @@
+server:
+  port: 8081
+spring:
+  # 配置数据库
+  datasource:
+    url: ENC(eGocqIbCYQRS2qYfT1WLHItDnuvSwSl4cv7FXZPc0kW82ThxwtBYIXAl/zJ3Af6gDCtLeVKxbkM1FT6GVUfYolFcvVcOL09duCNdoRZEdkNwQOygQ4rXJ/JkVpe87/Ev/JnAcomzmHG05/1UlYC37NnWWImDqdc49fUw208TCEceh8ntPMv9Ut4ifoM9RZpH6YRNrCMGXuTMpzlWSJGP48hh+PAOeIMTOFb7FKC21D7OJO5g3fyf2LOJhIqCMA1VIv9z57v+fXU=)
+    username: ENC(DQcwcaV7A9WnrA6WJZJBLA==)
+    password: ENC(wP3yeF2BI8Lr2YlGghYcQA5H4oteYGo6)
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    #=======================================================================================================================
+    #阿里巴巴的druid数据源
+    druid:
+      #初始化连接数
+      initial-size: 3
+      #最小空闲连接
+      min-idle: 3
+      #最大活动连接
+      max-active: 20
+      # 配置获取连接等待超时的时间
+      max-wait: 10000
+      # 是否缓存preparedStatement，也就是PSCache。PSCache对支持游标的数据库性能提升巨大，比如说oracle。在mysql下建议关闭。(缺省值：false)
+      pool-prepared-statements: false
+      # 要启用PSCache，必须配置大于0，当大于0时，poolPreparedStatements自动触发修改为true。
+      # 在Druid中，不会存在Oracle下PSCache占用内存过多的问题，可以把这个数值配置大一些，比如说100
+      max-open-prepared-statements: -1
+      # 用来检测连接是否有效的sql，要求是一个查询语句。如果validationQuery为null，testOnBorrow、testOnReturn、testWhileIdle都不会其作用。
+      validation-query: SELECT 'x'
+      validation-query-timeout: -1
+      # 申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。
+      test-on-borrow: true
+      # 归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能
+      test-on-return: false
+      # 建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
+      test-while-idle: true
+      # 1) Destroy线程会检测连接的间隔时间 2) testWhileIdle的判断依据，详细看testWhileIdle属性的说明
+      time-between-eviction-runs-millis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      min-evictable-idle-time-millis: 300000
+      # 物理连接初始化的时候执行的sql
+      connection-init-sqls: select 1 from dual
+      # 合并多个DruidDataSource的监控数据
+      use-global-data-source-stat: true
+      # 属性类型是字符串，通过别名的方式配置扩展插件，常用的插件有： 监控统计用的filter:stat日志用的filter:log4j防御sql注入的filter:wall
+      filters: stat,wall,slf4j
+
+      # 监控统计慢SQL
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 2000
+
+      # statViewServlet配置
+      stat-view-servlet:
+        # 是否启用statViewServlet配置，说明配置参考druid wiki
+        enabled: true
+        # 访问监控页面
+        url-pattern: /druid/*
+        # 禁止手动重置监控数据
+        reset-enable: false
+        # 设置监控页面的登陆名
+        login-username: admin
+        # 设置监控页面的登陆密码
+        login-password: 123456
+
+      #WebStatFilter配置，说明请参考Druid Wiki，配置_配置WebStatFilter
+      web-stat-filter:
+        # 是否启用WebStatFilter
+        enabled: true
+        # 访问路径
+        url-pattern: /*
+        # 排除不必要的url
+        exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
+        # 监控最大session数，默认是1000
+        session-stat-max-count: 1000
+        # 是否启用session的统计功能
+        session-stat-enable: true
+        # 是否启用监控单个Url调用的sql列表
+        profile-enable: true
+        # 使druid当前session的用户是谁，session_user_key是你保存到session中的sessionName
+        principalSessionName: session_user_key
+        # 使druid只当当前的user是谁,cookie_user_key是你保存在cookie中的cookieName
+        principalCookieName: cookie_user_key
+
+  #=======================================================================================================================
+  #设置上传文件大小
+  servlet:
+    #是单个文件大小
+    multipart.max-file-size: 20MB
+    #是设置总上传的数据大小
+    multipart.max-request-size: 20MB
+
+  #=======================================================================================================================
+  # REDIS (RedisProperties)
+  redis:
+    # Redis数据库索引（默认为0）
+    database: 0
+    # Redis服务器地址
+    host: localhost
+    # Redis服务器连接密码（默认为空）
+    port: 6379
+    # Redis服务器连接密码（默认为空）
+    password:
+    #连接池最大连接数（使用负值表示没有限制）
+    jedis:
+      pool:
+        max-active: 8
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1
+        # 连接池中的最大空闲连接
+        max-idle: 8
+        # 连接池中的最小空闲连接
+        min-idle: 0
+    # 连接超时时间（毫秒）
+    timeout: 3000
+
+#=======================================================================================================================
+#mybatis配置文件
+mybatis:
+  #  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mybatis/*.xml
+
+#=======================================================================================================================
+#jasypt加密
+jasypt:
+  encryptor:
+    password: zlszfycxw2019
+
+#=======================================================================================================================
+#swagger接口文档开关
+swagger:
+  show: true
+
+#=======================================================================================================================
+#打印sql
+logging:
+  level.com.*: debug
+
