@@ -3,9 +3,9 @@ server:
 spring:
   # 配置数据库
   datasource:
-    url: ENC(eGocqIbCYQRS2qYfT1WLHItDnuvSwSl4cv7FXZPc0kW82ThxwtBYIXAl/zJ3Af6gDCtLeVKxbkM1FT6GVUfYolFcvVcOL09duCNdoRZEdkNwQOygQ4rXJ/JkVpe87/Ev/JnAcomzmHG05/1UlYC37NnWWImDqdc49fUw208TCEceh8ntPMv9Ut4ifoM9RZpH6YRNrCMGXuTMpzlWSJGP48hh+PAOeIMTOFb7FKC21D7OJO5g3fyf2LOJhIqCMA1VIv9z57v+fXU=)
-    username: ENC(DQcwcaV7A9WnrA6WJZJBLA==)
-    password: ENC(wP3yeF2BI8Lr2YlGghYcQA5H4oteYGo6)
+    url: ENC(7JFUY0ZRl7IQsuIv14CLtl6e8DQCQfGOrbHQ+ZGnDaFxvkP0yCaiiAezGa9wqcjPPFP3ZN31ZZvUDQi7sxfIT4cf12u45pubj4YQq6HoI5mcjQ0gxMgyGzeVAvX6trEAjrHfdzHmJjFDQLopisHcM7Oe6ZkYYXGHSLSBDy26ADd2vpt8dDOumGrq1+FzlmMxXuQgEBuWEU0cSslX8UubosRHndSZdqCOtga2jb2cllmUe0GNTYg8c2tYvLwJptbaX9W8+EzhP7c=)
+    username: ENC(d4L1dOYAeppxGc5Hb/Rg0w==)
+    password: ENC(aGvlaX7rexfmcpky3UwtChs3BqouPj8K)
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
 

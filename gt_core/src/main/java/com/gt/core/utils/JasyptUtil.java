@@ -14,8 +14,8 @@ public class JasyptUtil {
 	
 	public static void main(String[] args) throws Exception {
 		System.out.println(encrypt("root"));
-        System.out.println(encrypt("jdbc:mysql://106.53.53.242:3306/demo?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"));
-		System.out.println(encrypt("Zlsfznh@163.com"));
+        System.out.println(encrypt("jdbc:mysql://127.0.0.1:3306/gt_user?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"));
+		System.out.println(encrypt("guting123"));
     }
 	
 	/**
